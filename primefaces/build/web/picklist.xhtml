@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC 
+    "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Titulo</title>
+    </h:head>
+
+    <h:body>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                <h3 style="margin-top: 0" align="center">PickList Básica</h3>
+                <h:form id="form">
+                    <p:growl id="message" showDetail="true" />
+
+                    <!--Lista pura-->
+                    <p:pickList
+
+                        id="pickList" 
+                        value="#{filmeControle.listaoDl}" 
+                        var="filme" 
+                        itemLabel="#{filme.nome}" 
+                        itemValue="#{filme.nome}" />
+
+                </h:form>
+
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+        </div>
+
+    </h:body>
+</html>

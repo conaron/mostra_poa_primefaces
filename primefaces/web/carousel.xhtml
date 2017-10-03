@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC 
+    "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>Titulo</title>
+    </h:head>
+
+    <h:body>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+            <div class="ui-g-12 ui-md-6 ui-lg-4">
+
+
+                <h:form id="form">
+
+                    <p:carousel 
+                        value="#{filmeControle.lista}"
+                        headerText="Custom" 
+                        var="filme"
+                        itemStyle="text-align:center" 
+                        numVisible="1" 
+                        easing="easeOutBounce" 
+
+                        circular="true">
+
+                        <p:panelGrid 
+                            columns="1" 
+                            style="width:100%; margin:10px 0px"     
+                            columnClasses="label,value" 
+                            layout="grid" 
+                            styleClass="ui-panelgrid-blank">
+
+                            <f:facet name="header">
+                                <!--<p:graphicImage name="#{filme.imagem}"/>--> 
+                            </f:facet>
+
+                            <h:outputText value="Ano: #{filme.ano}" />
+                            <h:outputText value="Nome: #{filme.nome}" />
+
+                            <f:facet name="footer">
+                                <p:growl id="message" showDetail="true" />
+
+                                <p:commandButton 
+                                    style="align-self: center; width:100%"
+                                    value="Descrição" 
+                                    actionListener="#{filmeControle.feedBack()}" 
+                                    update="message">
+                                    <p:confirm 
+                                        
+                                        header="O filme é bom?" 
+                                        message="#{filme.descricao}" 
+                                        />
+                                </p:commandButton>
+
+                            </f:facet>
+
+                        </p:panelGrid>
+                    </p:carousel>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" style="width: 50%">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+
+                </h:form>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+        </div>
+
+    </h:body>
+</html>
